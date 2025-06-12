@@ -2,8 +2,8 @@ pipeline {
     agent {label 'app'}
 
     stage('Test Docker') {
-    steps {
-        sh 'docker --version'
+        steps {
+            sh 'docker --version'
+        }
     }
-}
 }
