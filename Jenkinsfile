@@ -1,5 +1,5 @@
 pipeline {
-    agent app
+    agent { label 'app'}
 
     environment {
         AWS_ACCOUNT_ID = '974328657523'
