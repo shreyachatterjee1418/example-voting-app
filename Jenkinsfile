@@ -5,7 +5,7 @@ pipeline{
     }
 
     environment {
-        AWS_ACCOUNT_ID = '974328657523"
+        AWS_ACCOUNT_ID = '974328657523'
         AWS_REGION = 'us-east-1'
         ECR_REPO = 'node-app-repo'
     }
