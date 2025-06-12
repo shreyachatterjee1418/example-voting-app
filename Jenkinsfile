@@ -29,11 +29,13 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                    sh'''
                     docker pull $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:vote-v${BUILD_NUMBER}
-                     docker stop $CONTAINER_NAME || true
-                     docker rm $CONTAINER_NAME || true
-                     docker run -d --name $CONTAINER_NAME -p 80:8080 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:vote-v${BUILD_NUMBER}
-                        echo "Deployment successful. Application is running on port 80."
+                    docker stop $CONTAINER_NAME || true
+                    docker rm $CONTAINER_NAME || true
+                    docker run -d --name $CONTAINER_NAME -p 80:8080 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:vote-v${BUILD_NUMBER}
+                    echo "Deployment successful. Application is running on port 80."
+                    '''sh
                 }
             }
     }
